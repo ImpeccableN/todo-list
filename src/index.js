@@ -1,1 +1,3 @@
-import { createTodo } from "./js/todos.js";
+import { createButton } from "./js/dom.js";
+
+createButton();

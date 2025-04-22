@@ -4,7 +4,10 @@ const content = document.querySelector("#content");
 
 export const createButton = () => {
     const newButton = document.createElement("button");
-    newButton.addEventListener("click", () => {createForm();});
+    newButton.addEventListener("click", () => {
+        createForm();
+        newButton.remove();
+    });
     newButton.textContent = "new ToDo";
     content.appendChild(newButton);
 }
@@ -58,7 +61,12 @@ const createForm = () => {
     prioLabel.textContent = "Priority:";
 
     addButton.textContent = "add ToDo"
-
+    addButton.addEventListener("click", () => {
+        newToDo(titleInput.value, dateInput.value, 
+        descriptionInput.value, prioInput.value);
+        createButton();
+        form.remove();
+    });
     content.appendChild(form);
 
     form.appendChild(titleLabel);
@@ -76,4 +84,8 @@ const createForm = () => {
 
     form.appendChild(addButton);
 
+}
+
+function newToDo(title, date, description, priority){
+    const toDo = createTodo(title, date, description, priority);
 }

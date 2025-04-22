@@ -26,6 +26,8 @@ const createForm = () => {
     const descriptionLabel = document.createElement("label");
     const prioLabel = document.createElement("label");
 
+    const addButton = document.createElement("button");
+
     titleInput.setAttribute("type", "text");
     titleInput.setAttribute("id", "title");
     dateInput.setAttribute("type", "date");
@@ -38,6 +40,8 @@ const createForm = () => {
     prioHigh.setAttribute("value", "high");
     prioMid.setAttribute("value", "mid");
     prioLow.setAttribute("value", "low");
+
+    addButton.setAttribute("type", "button");
     
     titleLabel.setAttribute("for", "title");
     dateLabel.setAttribute("for", "dueDate");
@@ -53,7 +57,10 @@ const createForm = () => {
     descriptionLabel.textContent = "Task Description:";
     prioLabel.textContent = "Priority:";
 
+    addButton.textContent = "add ToDo"
+
     content.appendChild(form);
+
     form.appendChild(titleLabel);
     form.appendChild(titleInput);
     form.appendChild(dateLabel);
@@ -62,8 +69,11 @@ const createForm = () => {
     form.appendChild(descriptionInput);
     form.appendChild(prioLabel);
     form.appendChild(prioInput);
+
     prioInput.appendChild(prioLow);
     prioInput.appendChild(prioMid);
     prioInput.appendChild(prioHigh);
+
+    form.appendChild(addButton);
 
 }

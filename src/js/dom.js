@@ -1,4 +1,4 @@
-import { createTodo } from "./todos.js";
+import { listManager } from "./todos.js";
 
 const content = document.querySelector("#content");
 
@@ -87,5 +87,5 @@ const createForm = () => {
 }
 
 function newToDo(title, date, description, priority){
-    const toDo = createTodo(title, date, description, priority);
+    listManager.newToDo(title, date, description, priority);
 }

@@ -1,5 +1,9 @@
-export function createTodo(title, dueDate, description, priority) {
+function createTodo(title, dueDate, description, priority) {
     let done = false;
+    let project;
+
+    const setProject = (projName) => {project = projName};
+    const getProject = () => project;
 
     const setDone = () => { done = true };
     const getDone = () => done;
@@ -18,6 +22,30 @@ export function createTodo(title, dueDate, description, priority) {
 
     return {
         setDone, getDone, setTitle, getTitle, setDueDate, getDueDate,
-        setDescription, getDescription, setPriority, getPriority
+        setDescription, getDescription, setPriority, getPriority, 
+        setProject, getProject
     };
 };
+
+const toDoList = (function() {
+    let list = [];
+
+    const getList = () => list;
+    const getListElement = (listPos) => list[listPos];
+    const addToList = (toDo) => {list.push(toDo)};
+    const removeFromList = (listPos) => {list.splice(listPos, 1)};
+
+    return {
+        addToList, removeFromList, getList, getListElement
+    }
+})();
+
+export const listManager = (function listManage(){
+    const newToDo = function(title, date, description, prio) {
+        let toDo = createTodo(title, date, description, prio);
+        toDoList.addToList(toDo);
+    }
+    return {
+        newToDo
+    };
+})();

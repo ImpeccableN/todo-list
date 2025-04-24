@@ -42,8 +42,10 @@ const toDoList = (function() {
 
 export const listManager = (function listManage(){
     const newToDo = function(title, date, description, prio) {
-        let toDo = createTodo(title, date, description, prio);
+        const toDo = createTodo(title, date, description, prio);
         toDoList.addToList(toDo);
+
+        return toDo;
     }
 
     const getListPos = (toDoTitle) => {

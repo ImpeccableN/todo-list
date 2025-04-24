@@ -1,6 +1,7 @@
 import { listManager } from "./todos.js";
 
 const content = document.querySelector("#content");
+const tododiv = document.querySelector("#todos");
 
 export const createButton = () => {
     const newButton = document.createElement("button");
@@ -86,10 +87,18 @@ const createForm = () => {
 
 }
 
-const createToDoDom = () => {
+const createToDoDom = (toDotitle) => {
+    const container = document.createElement("div");
+    const title = document.createElement("div");
+
+    title.textContent = toDotitle;
     
+    tododiv.appendChild(container);
+    container.appendChild(title);
+
 }
 
 function newToDo(title, date, description, priority){
     const toDo = listManager.newToDo(title, date, description, priority);
+    createToDoDom(toDo.getTitle());
 }

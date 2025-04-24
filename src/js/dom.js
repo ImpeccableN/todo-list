@@ -86,6 +86,10 @@ const createForm = () => {
 
 }
 
+const createToDoDom = () => {
+    
+}
+
 function newToDo(title, date, description, priority){
-    listManager.newToDo(title, date, description, priority);
+    const toDo = listManager.newToDo(title, date, description, priority);
 }

@@ -56,6 +56,6 @@ export const listManager = (function listManage(){
     }
 
     return {
-        newToDo
+        newToDo, getListPos
     };
 })();

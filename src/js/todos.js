@@ -45,6 +45,16 @@ export const listManager = (function listManage(){
         let toDo = createTodo(title, date, description, prio);
         toDoList.addToList(toDo);
     }
+
+    const getListPos = (toDoTitle) => {
+        let list = toDoList.getList();
+        for (let i = 0; i++; i < list.length){
+            if (list[i].getTitle() == toDoTitle){
+                return i;
+            }
+        };
+    }
+
     return {
         newToDo
     };

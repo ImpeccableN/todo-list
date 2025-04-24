@@ -6,3 +6,4 @@ function createProject(title){
         setTitle, getTitle
     }
 }
+

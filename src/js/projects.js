@@ -1,3 +1,5 @@
+import { createProjDom } from "./dom";
+
 function createProject(title){
     const setTitle = (newTitle) => {title = newTitle};
     const getTitle = () => title;
@@ -26,6 +28,7 @@ export const projListManager = (function manageProjList(){
     const newProj = function(title) {
         const proj = createProject(title);
         projList.addToList(proj);
+        createProjDom(title);
         console.log(projList.getList());
         return proj
     };
@@ -45,7 +48,9 @@ export const projListManager = (function manageProjList(){
         console.log(projList.getList());
     };
 
+    const getList = () => projList.getList();
+    
     return {
-        newProj, removeProj
+        newProj, removeProj, getList
     }
 })();

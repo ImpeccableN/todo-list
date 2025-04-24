@@ -1,4 +1,5 @@
 import { listManager } from "./todos.js";
+import { projListManager } from "./projects.js";
 
 const content = document.querySelector("#content");
 const tododiv = document.querySelector("#todos");
@@ -85,25 +86,31 @@ const createForm = () => {
 
     form.appendChild(addButton);
 
-}
+};
 
-const createProjDom = (projTitle) => {
+export const createProjDom = (projTitle) => {
     const container = document.createElement("div");
     const title = document.createElement("div");
 
-    title.textContent = "Project: " + title;
-}
+    container.setAttribute("id", projTitle);
+
+    title.textContent = "Project: " + projTitle;
+
+    tododiv.appendChild(container);
+    container.appendChild(title);
+};
 
 const createToDoDom = (toDo) => {
+    const toDoContainer = document.querySelector("#" + toDo.getProject());
     const container = document.createElement("div");
     const title = document.createElement("div");
 
     title.textContent = toDo.getTitle();
     
-    tododiv.appendChild(container);
+    toDoContainer.appendChild(container);
     container.appendChild(title);
 
-}
+};
 
 function newToDo(title, date, description, priority){
     const toDo = listManager.newToDo(title, date, description, priority);

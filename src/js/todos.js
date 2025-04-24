@@ -45,6 +45,7 @@ const toDoList = (function() {
 export const listManager = (function listManage(){
     const newToDo = function(title, date, description, prio) {
         const toDo = createTodo(title, date, description, prio);
+        toDo.setProject("default");
         toDoList.addToList(toDo);
         console.log(toDoList.getList());
         return toDo
@@ -65,7 +66,9 @@ export const listManager = (function listManage(){
         console.log(toDoList.getList());
     };
 
+    const getList = () => toDoList.getList();
+
     return {
-        newToDo, removeToDo
+        newToDo, removeToDo, getList
     };
 })();

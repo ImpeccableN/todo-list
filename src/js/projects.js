@@ -5,5 +5,47 @@ function createProject(title){
     return {
         setTitle, getTitle
     }
-}
+};
 
+
+const projList = (function() {
+    let list = [];
+
+    const getList = () => list;
+    const getListElement = (listPos) => list[listPos];
+    const addToList = (project) => {list.push(project)};
+    const removeFromList = (listPos) => {list.splice(listPos, 1)};
+
+    return {
+        getList, getListElement, addToList, removeFromList
+    }
+})();
+
+
+export const projListManager = (function manageProjList(){
+    const newProj = function(title) {
+        const proj = createProject(title);
+        projList.addToList(proj);
+        console.log(projList.getList());
+        return proj
+    };
+
+    const getListPos = (projTitle) => {
+        let list = projList.getList();
+        for (let i = 0; i++; i < list.length){
+            if (list[i].getTitle() == projTitle){
+                return i;
+            }
+        };
+    };
+
+    const removeProj = (projTitle) => {
+        const listPos = getListPos(projTitle);
+        projList.removeFromList(listPos);
+        console.log(projList.getList());
+    };
+
+    return {
+        newProj, removeProj
+    }
+})();

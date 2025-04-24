@@ -1,3 +1,5 @@
+import { projListManager } from "./projects.js"
+
 function createTodo(title, dueDate, description, priority) {
     let done = false;
     let project;
@@ -44,9 +46,9 @@ export const listManager = (function listManage(){
     const newToDo = function(title, date, description, prio) {
         const toDo = createTodo(title, date, description, prio);
         toDoList.addToList(toDo);
-
-        return toDo;
-    }
+        console.log(toDoList.getList());
+        return toDo
+    };
 
     const getListPos = (toDoTitle) => {
         let list = toDoList.getList();
@@ -55,9 +57,15 @@ export const listManager = (function listManage(){
                 return i;
             }
         };
-    }
+    };
+
+    const removeToDo = (toDoTitle) => {
+        const listPos = getListPos(toDoTitle);
+        toDoList.removeFromList(listPos);
+        console.log(toDoList.getList());
+    };
 
     return {
-        newToDo, getListPos
+        newToDo, removeToDo
     };
 })();

@@ -87,11 +87,18 @@ const createForm = () => {
 
 }
 
-const createToDoDom = (toDotitle) => {
+const createProjDom = (projTitle) => {
     const container = document.createElement("div");
     const title = document.createElement("div");
 
-    title.textContent = toDotitle;
+    title.textContent = "Project: " + title;
+}
+
+const createToDoDom = (toDo) => {
+    const container = document.createElement("div");
+    const title = document.createElement("div");
+
+    title.textContent = toDo.getTitle();
     
     tododiv.appendChild(container);
     container.appendChild(title);
@@ -100,5 +107,5 @@ const createToDoDom = (toDotitle) => {
 
 function newToDo(title, date, description, priority){
     const toDo = listManager.newToDo(title, date, description, priority);
-    createToDoDom(toDo.getTitle());
+    createToDoDom(toDo);
 }

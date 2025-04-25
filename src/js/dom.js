@@ -6,15 +6,27 @@ const tododiv = document.querySelector("#todos");
 
 export const createButton = () => {
     const newButton = document.createElement("button");
+    newButton.setAttribute("id", "newToDoButton");
     newButton.addEventListener("click", () => {
-        createForm();
+        createToDoForm();
         newButton.remove();
     });
     newButton.textContent = "new ToDo";
     content.appendChild(newButton);
 }
 
-const createForm = () => {
+export const createProjButton = () => {
+    const newButton = document.createElement("button");
+    newButton.setAttribute("id", "newProjButton");
+    newButton.addEventListener("click", () => {
+        createProjForm();
+        newButton.remove();
+    });
+    newButton.textContent = "new Project";
+    content.appendChild(newButton);
+}
+
+const createToDoForm = () => {
     const form = document.createElement("form");
 
     const titleInput = document.createElement("input");
@@ -88,13 +100,41 @@ const createForm = () => {
 
 };
 
-export const createProjDom = (projTitle) => {
+function createProjForm() {
+    const div = document.createElement("div");
+    const input = document.createElement("input");
+    const inputLabel = document.createElement("label");
+    const button = document.createElement("button");
+
+    div.setAttribute("id", "newProjDiv");
+    input.setAttribute("type", "text");
+    input.setAttribute("id", "newProjInput");
+    inputLabel.setAttribute("for", "newProjInput");
+    button.setAttribute("type", "button");
+
+    inputLabel.textContent = "Projectname:";
+    button.textContent = "add Project";
+
+    button.addEventListener("click", () => {
+        newProj(input.value);
+        createProjButton();
+        div.remove();
+    });
+
+    content.appendChild(div);
+    div.appendChild(inputLabel);
+    div.appendChild(input);
+    div.appendChild(button);
+}
+
+export const createProjDom = (proj) => {
     const container = document.createElement("div");
     const title = document.createElement("div");
 
-    container.setAttribute("id", projTitle);
+    container.setAttribute("id", proj.getTitle());
+    container.setAttribute("class", "project");
 
-    title.textContent = "Project: " + projTitle;
+    title.textContent = "Project: " + proj.getTitle();
 
     tododiv.appendChild(container);
     container.appendChild(title);
@@ -106,6 +146,10 @@ const createToDoDom = (toDo) => {
     const title = document.createElement("div");
 
     title.textContent = toDo.getTitle();
+
+    title.addEventListener("click", () => {
+        expandToDo(toDo, container)
+    })
     
     toDoContainer.appendChild(container);
     container.appendChild(title);
@@ -115,4 +159,23 @@ const createToDoDom = (toDo) => {
 function newToDo(title, date, description, priority){
     const toDo = listManager.newToDo(title, date, description, priority);
     createToDoDom(toDo);
+}
+
+export function newProj(title){
+    const proj = projListManager.newProj(title);
+    createProjDom(proj);
+}
+
+function expandToDo(toDo, div){
+    const date = document.createElement("div");
+    const descr = document.createElement("div");
+    const prio = document.createElement("div");
+
+    date.textContent = "Due Date: " + toDo.getDueDate();
+    descr.textContent = "Description: " + toDo.getDescription();
+    prio.textContent = "Priority: " + toDo.getPriority();
+
+    div.appendChild(date);
+    div.appendChild(descr);
+    div.appendChild(prio);
 }

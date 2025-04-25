@@ -60,6 +60,10 @@ export const listManager = (function listManage(){
         };
     };
 
+    const getListElement = (toDoTitle) => {
+        return toDoList.getListElement(getListPos(toDoTitle));
+    }
+
     const removeToDo = (toDoTitle) => {
         const listPos = getListPos(toDoTitle);
         toDoList.removeFromList(listPos);
@@ -69,6 +73,6 @@ export const listManager = (function listManage(){
     const getList = () => toDoList.getList();
 
     return {
-        newToDo, removeToDo, getList
+        newToDo, removeToDo, getList, getListElement
     };
 })();

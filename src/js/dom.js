@@ -180,17 +180,103 @@ export function newProj(title) {
 }
 
 function expandToDo(toDo, div) {
-    const container = document.createElement("div");
+    
     const date = document.createElement("div");
     const descr = document.createElement("div");
     const prio = document.createElement("div");
+    const editButton = document.createElement("button");
 
     date.textContent = "Due Date: " + toDo.getDueDate();
     descr.textContent = "Description: " + toDo.getDescription();
     prio.textContent = "Priority: " + toDo.getPriority();
+    editButton.textContent = "edit";
 
-    div.appendChild(container);
-    container.appendChild(date);
-    container.appendChild(descr);
-    container.appendChild(prio);
+    editButton.addEventListener("click", () => {
+        editToDoForm(toDo, div);
+    })
+
+    div.appendChild(date);
+    div.appendChild(descr);
+    div.appendChild(prio);
+    div.appendChild(editButton);
+}
+
+function editToDoForm(toDo, container){
+    while(container.firstElementChild){
+        container.firstElementChild.remove();
+    }
+    const form = document.createElement("form");
+    const titleInput = document.createElement("input");
+    const dateInput = document.createElement("input");
+    const descriptionInput = document.createElement("input");
+
+    const projectInput = document.createElement("select");
+    
+
+    const prioInput = document.createElement("select");
+    const prioHigh = document.createElement("option");
+    const prioMid = document.createElement("option");
+    const prioLow = document.createElement("option");
+
+    const titleLabel = document.createElement("label");
+    const dateLabel = document.createElement("label");
+    const descriptionLabel = document.createElement("label");
+    const prioLabel = document.createElement("label");
+    const projLabel = document.createElement("label");
+
+    titleInput.setAttribute("type", "text");
+    titleInput.setAttribute("id", "edittitle");
+    dateInput.setAttribute("type", "date");
+    dateInput.setAttribute("id", "editdueDate");
+    descriptionInput.setAttribute("type", "text");
+    descriptionInput.setAttribute("id", "editdescription");
+    prioInput.setAttribute("name", "priority");
+    prioInput.setAttribute("id", "editpriority");
+    // prioHigh.setAttribute("selected");
+    prioHigh.setAttribute("value", "high");
+    prioMid.setAttribute("value", "mid");
+    prioLow.setAttribute("value", "low");
+    projectInput.setAttribute("name", "projects");
+    projectInput.setAttribute("id", "editProj");
+
+    titleLabel.setAttribute("for", "edittitle");
+    dateLabel.setAttribute("for", "editdueDate");
+    descriptionLabel.setAttribute("for", "editdescription");
+    prioLabel.setAttribute("for", "editpriority");
+    projLabel.setAttribute("for", "editProj");
+
+    prioHigh.textContent = "High";
+    prioMid.textContent = "Middle";
+    prioLow.textContent = "Low";
+
+    titleLabel.textContent = "Task Title:";
+    dateLabel.textContent = "Due Date:";
+    descriptionLabel.textContent = "Task Description:";
+    prioLabel.textContent = "Priority:";
+    projLabel.textContent = "Project:";
+
+    container.appendChild(form);
+    form.appendChild(projLabel);
+    form.appendChild(projectInput);
+
+    const projList = projListManager.getList();
+    for(let i = 0; i < projList.length; i++){
+        const projSelect = document.createElement("option");
+        projSelect.setAttribute("value", projList[i].getTitle());
+        projSelect.textContent = projList[i].getTitle();
+        projectInput.appendChild(projSelect);
+    };
+
+    form.appendChild(titleLabel);
+    form.appendChild(titleInput);
+    form.appendChild(dateLabel);
+    form.appendChild(dateInput);
+    form.appendChild(descriptionLabel);
+    form.appendChild(descriptionInput);
+    form.appendChild(prioLabel);
+    form.appendChild(prioInput);
+
+    prioInput.appendChild(prioLow);
+    prioInput.appendChild(prioMid);
+    prioInput.appendChild(prioHigh);
 }

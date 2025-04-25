@@ -44,7 +44,6 @@ export const projListManager = (function manageProjList(){
     const removeProj = (projTitle) => {
         const listPos = getListPos(projTitle);
         projList.removeFromList(listPos);
-        console.log(projList.getList());
     };
 
     const getList = () => projList.getList();

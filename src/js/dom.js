@@ -59,7 +59,7 @@ const createToDoForm = () => {
     prioLow.setAttribute("value", "low");
 
     addButton.setAttribute("type", "button");
-    
+
     titleLabel.setAttribute("for", "title");
     dateLabel.setAttribute("for", "dueDate");
     descriptionLabel.setAttribute("for", "description");
@@ -68,7 +68,7 @@ const createToDoForm = () => {
     prioHigh.textContent = "High";
     prioMid.textContent = "Middle";
     prioLow.textContent = "Low";
-    
+
     titleLabel.textContent = "Task Title:";
     dateLabel.textContent = "Due Date:";
     descriptionLabel.textContent = "Task Description:";
@@ -76,8 +76,8 @@ const createToDoForm = () => {
 
     addButton.textContent = "add ToDo"
     addButton.addEventListener("click", () => {
-        newToDo(titleInput.value, dateInput.value, 
-        descriptionInput.value, prioInput.value);
+        newToDo(titleInput.value, dateInput.value,
+            descriptionInput.value, prioInput.value);
         createButton();
         form.remove();
     });
@@ -144,29 +144,43 @@ const createToDoDom = (toDo) => {
     const toDoContainer = document.querySelector("#" + toDo.getProject());
     const container = document.createElement("div");
     const title = document.createElement("div");
+    const expandDiv = document.createElement("div");
+
+    let expandSwitch = false;
 
     title.textContent = toDo.getTitle();
 
     title.addEventListener("click", () => {
-        expandToDo(toDo, container)
+        if (!expandSwitch) {
+            expandToDo(toDo, expandDiv)
+            expandSwitch = true;
+        } else {
+            while (expandDiv.firstElementChild) {
+                expandDiv.firstElementChild.remove();
+            };
+            expandSwitch = false;
+        }
+
     })
-    
+
     toDoContainer.appendChild(container);
     container.appendChild(title);
+    container.appendChild(expandDiv);
 
 };
 
-function newToDo(title, date, description, priority){
+function newToDo(title, date, description, priority) {
     const toDo = listManager.newToDo(title, date, description, priority);
     createToDoDom(toDo);
 }
 
-export function newProj(title){
+export function newProj(title) {
     const proj = projListManager.newProj(title);
     createProjDom(proj);
 }
 
-function expandToDo(toDo, div){
+function expandToDo(toDo, div) {
+    const container = document.createElement("div");
     const date = document.createElement("div");
     const descr = document.createElement("div");
     const prio = document.createElement("div");
@@ -175,7 +189,8 @@ function expandToDo(toDo, div){
     descr.textContent = "Description: " + toDo.getDescription();
     prio.textContent = "Priority: " + toDo.getPriority();
 
-    div.appendChild(date);
-    div.appendChild(descr);
-    div.appendChild(prio);
+    div.appendChild(container);
+    container.appendChild(date);
+    container.appendChild(descr);
+    container.appendChild(prio);
 }

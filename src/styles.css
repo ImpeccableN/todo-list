@@ -1,0 +1,13 @@
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 650px;
+}

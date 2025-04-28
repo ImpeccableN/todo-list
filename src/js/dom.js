@@ -28,7 +28,8 @@ export const createProjButton = () => {
 
 const createToDoForm = () => {
     const form = document.createElement("form");
-
+    form.classList.toggle("flex");
+    
     const titleInput = document.createElement("input");
     const dateInput = document.createElement("input");
     const descriptionInput = document.createElement("input");
@@ -106,6 +107,8 @@ function createProjForm() {
     const inputLabel = document.createElement("label");
     const button = document.createElement("button");
 
+    div.classList.toggle("flex");
+
     div.setAttribute("id", "newProjDiv");
     input.setAttribute("type", "text");
     input.setAttribute("id", "newProjInput");
@@ -129,6 +132,8 @@ function createProjForm() {
 
 export const createProjDom = (proj) => {
     const container = document.createElement("div");
+    container.classList.toggle("projDom");
+    container.classList.toggle("flex");
     const title = document.createElement("div");
 
     container.setAttribute("id", proj.getTitle());
@@ -145,6 +150,9 @@ const createToDoDom = (toDo) => {
     const container = document.createElement("div");
     const title = document.createElement("div");
     const expandDiv = document.createElement("div");
+
+    toDoContainer.classList.toggle("toDoDom");
+    toDoContainer.classList.toggle("flex");
 
     let expandSwitch = false;
 

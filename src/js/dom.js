@@ -133,11 +133,9 @@ function createProjForm() {
 export const createProjDom = (proj) => {
     const container = document.createElement("div");
     container.classList.toggle("projDom");
-    container.classList.toggle("flex");
     const title = document.createElement("div");
 
     container.setAttribute("id", proj.getTitle());
-    container.setAttribute("class", "project");
 
     title.textContent = "Project: " + proj.getTitle();
 

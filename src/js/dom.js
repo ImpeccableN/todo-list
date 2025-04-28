@@ -149,8 +149,7 @@ const createToDoDom = (toDo) => {
     const title = document.createElement("div");
     const expandDiv = document.createElement("div");
 
-    toDoContainer.classList.toggle("toDoDom");
-    toDoContainer.classList.toggle("flex");
+    container.classList.toggle("toDoDom");
 
     let expandSwitch = false;
 

@@ -41,3 +41,19 @@ form {
     flex-direction: column;
     align-items: baseline;
 }
+
+.projDom {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.toDoDom {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px 10px 20px;
+}
+
+.toDoDom > div > button {
+    margin: 5px 0px 5px 0px;
+}

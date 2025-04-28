@@ -174,6 +174,14 @@ function newToDo(title, date, description, priority) {
     createToDoDom(toDo);
 }
 
+function editToDo(toDo, proj, title, date, description, priority) {
+    toDo.setProject(proj);
+    toDo.setTitle(title);
+    toDo.setDueDate(date);
+    toDo.setDescription(description);
+    toDo.setPriority(priority);
+}
+
 export function newProj(title) {
     const proj = projListManager.newProj(title);
     createProjDom(proj);
@@ -209,10 +217,9 @@ function editToDoForm(toDo, container){
     const titleInput = document.createElement("input");
     const dateInput = document.createElement("input");
     const descriptionInput = document.createElement("input");
-
     const projectInput = document.createElement("select");
+    const submitButton = document.createElement("button");
     
-
     const prioInput = document.createElement("select");
     const prioHigh = document.createElement("option");
     const prioMid = document.createElement("option");
@@ -232,12 +239,13 @@ function editToDoForm(toDo, container){
     descriptionInput.setAttribute("id", "editdescription");
     prioInput.setAttribute("name", "priority");
     prioInput.setAttribute("id", "editpriority");
-    // prioHigh.setAttribute("selected");
+    
     prioHigh.setAttribute("value", "high");
     prioMid.setAttribute("value", "mid");
     prioLow.setAttribute("value", "low");
     projectInput.setAttribute("name", "projects");
     projectInput.setAttribute("id", "editProj");
+    submitButton.setAttribute("type", "button");
 
     titleLabel.setAttribute("for", "edittitle");
     dateLabel.setAttribute("for", "editdueDate");
@@ -254,6 +262,20 @@ function editToDoForm(toDo, container){
     descriptionLabel.textContent = "Task Description:";
     prioLabel.textContent = "Priority:";
     projLabel.textContent = "Project:";
+    submitButton.textContent = "Submit Changes";
+
+    projectInput.value = toDo.getProject();
+    titleInput.value = toDo.getTitle();
+    dateInput.value = toDo.getDueDate();
+    descriptionInput.value = toDo.getDescription();
+    prioInput.value = toDo.getPriority();
+
+    submitButton.addEventListener("click", () => {
+        editToDo(toDo, projectInput.value, titleInput.value, dateInput.value,
+            descriptionInput.value, prioInput.value
+        );
+        form.remove();
+    });
 
     container.appendChild(form);
     form.appendChild(projLabel);
@@ -275,6 +297,7 @@ function editToDoForm(toDo, container){
     form.appendChild(descriptionInput);
     form.appendChild(prioLabel);
     form.appendChild(prioInput);
+    form.appendChild(submitButton);
 
     prioInput.appendChild(prioLow);
     prioInput.appendChild(prioMid);

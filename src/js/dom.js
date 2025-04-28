@@ -275,6 +275,8 @@ function editToDoForm(toDo, container){
             descriptionInput.value, prioInput.value
         );
         form.remove();
+        updateProjects();
+        updateToDos();
     });
 
     container.appendChild(form);
@@ -306,7 +308,7 @@ function editToDoForm(toDo, container){
 
 function updateProjects(){
     while(tododiv.firstElementChild){
-        remove(firstElementChild)
+        tododiv.firstElementChild.remove()
     };
     const projList = projListManager.getList();
     for(let i = 0; i < projList.length; i++){

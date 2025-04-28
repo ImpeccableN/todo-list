@@ -302,4 +302,21 @@ function editToDoForm(toDo, container){
     prioInput.appendChild(prioLow);
     prioInput.appendChild(prioMid);
     prioInput.appendChild(prioHigh);
+};
+
+function updateProjects(){
+    while(tododiv.firstElementChild){
+        remove(firstElementChild)
+    };
+    const projList = projListManager.getList();
+    for(let i = 0; i < projList.length; i++){
+        createProjDom(projList[i]);
+    }
+}
+
+function updateToDos(){
+    const list = listManager.getList();
+    for(let i = 0; i < list.length; i++){
+        createToDoDom(list[i]);
+    }
 }

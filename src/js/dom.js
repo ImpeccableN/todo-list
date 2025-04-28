@@ -102,14 +102,14 @@ const createToDoForm = () => {
 };
 
 function createProjForm() {
-    const div = document.createElement("div");
+    const form = document.createElement("form");
     const input = document.createElement("input");
     const inputLabel = document.createElement("label");
     const button = document.createElement("button");
 
-    div.classList.toggle("flex");
+    form.classList.toggle("flex");
 
-    div.setAttribute("id", "newProjDiv");
+    form.setAttribute("id", "newProjForm");
     input.setAttribute("type", "text");
     input.setAttribute("id", "newProjInput");
     inputLabel.setAttribute("for", "newProjInput");
@@ -121,13 +121,13 @@ function createProjForm() {
     button.addEventListener("click", () => {
         newProj(input.value);
         createProjButton();
-        div.remove();
+        form.remove();
     });
 
-    content.appendChild(div);
-    div.appendChild(inputLabel);
-    div.appendChild(input);
-    div.appendChild(button);
+    content.appendChild(form);
+    form.appendChild(inputLabel);
+    form.appendChild(input);
+    form.appendChild(button);
 }
 
 export const createProjDom = (proj) => {

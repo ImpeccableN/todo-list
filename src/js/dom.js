@@ -207,6 +207,9 @@ function expandToDo(toDo, div) {
     const prio = document.createElement("div");
     const editButton = document.createElement("button");
     const doneButton = document.createElement("button");
+    const delButton = document.createElement("div");
+
+    delButton.classList.toggle("delButton");
 
     date.textContent = "Due Date: " + toDo.getDueDate();
     descr.textContent = "Description: " + toDo.getDescription();
@@ -216,13 +219,20 @@ function expandToDo(toDo, div) {
 
     editButton.addEventListener("click", () => {
         editToDoForm(toDo, div);
-    })
+    });
 
     doneButton.addEventListener("click", () => {
         toDo.setDone();
         div.parentNode.style["background-color"] = "green";
-    })
+    });
 
+    delButton.addEventListener("click", () => {
+        listManager.removeToDo(toDo.getTitle());
+        updateProjects();
+        updateToDos();
+    });
+
+    div.appendChild(delButton);
     div.appendChild(date);
     div.appendChild(descr);
     div.appendChild(prio);
@@ -301,6 +311,8 @@ function editToDoForm(toDo, container){
         updateProjects();
         updateToDos();
     });
+
+
 
     container.appendChild(form);
     form.appendChild(projLabel);

@@ -47,14 +47,21 @@ export const listManager = (function listManage(){
         const toDo = createTodo(title, date, description, prio);
         toDo.setProject("default");
         toDoList.addToList(toDo);
-        console.log(toDoList.getList());
+        getList().forEach(getToDoTitle);
         return toDo
     };
 
+    function getToDoTitle(todo){
+        console.log(todo.getTitle());
+    }
+
     const getListPos = (toDoTitle) => {
         let list = toDoList.getList();
-        for (let i = 0; i++; i < list.length){
+        console.log("getListPos called");
+        for (let i = 0; i < list.length; i++){
+            console.log(i);
             if (list[i].getTitle() == toDoTitle){
+                console.log(i);
                 return i;
             }
         };
@@ -67,7 +74,7 @@ export const listManager = (function listManage(){
     const removeToDo = (toDoTitle) => {
         const listPos = getListPos(toDoTitle);
         toDoList.removeFromList(listPos);
-        console.log(toDoList.getList());
+        getList().forEach(getToDoTitle);
     };
 
     const getList = () => toDoList.getList();

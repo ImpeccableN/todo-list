@@ -133,19 +133,20 @@ function createProjForm() {
 
 export const createProjDom = (proj) => {
     const container = document.createElement("div");
-    container.classList.toggle("projDom");
-    const title = document.createElement("div");
+    const todoscontainer = document.createElement("div");    
 
+    todoscontainer.classList.toggle("projDom");
     container.setAttribute("id", proj.getTitle());
 
-    title.textContent = "Project: " + proj.getTitle();
+    container.textContent = "Project: " + proj.getTitle();
 
     tododiv.appendChild(container);
-    container.appendChild(title);
+    container.appendChild(todoscontainer);
 };
 
 const createToDoDom = (toDo) => {
-    const toDoContainer = document.querySelector("#" + toDo.getProject());
+    const mainContainer = document.querySelector("#" + toDo.getProject());
+    const toDoContainer = mainContainer.firstElementChild;
     const container = document.createElement("div");
     const title = document.createElement("div");
     const expandDiv = document.createElement("div");
@@ -156,6 +157,10 @@ const createToDoDom = (toDo) => {
 
     title.textContent = toDo.getTitle();
     title.classList.toggle("pointer");
+
+    if(toDo.getDone()){
+        container.style["background-color"] = "lightgreen"
+    };
 
     
     title.addEventListener("click", () => {

@@ -29,6 +29,7 @@ export const createProjButton = () => {
 const createToDoForm = () => {
     const form = document.createElement("form");
     form.classList.toggle("flex");
+    form.setAttribute("id", "toDoForm");
     
     const titleInput = document.createElement("input");
     const dateInput = document.createElement("input");
@@ -154,6 +155,7 @@ const createToDoDom = (toDo) => {
     let expandSwitch = false;
 
     title.textContent = toDo.getTitle();
+    title.classList.toggle("pointer");
 
     title.addEventListener("click", () => {
         if (!expandSwitch) {
@@ -224,6 +226,8 @@ function editToDoForm(toDo, container){
     const descriptionInput = document.createElement("input");
     const projectInput = document.createElement("select");
     const submitButton = document.createElement("button");
+
+    form.classList.toggle("flex");
     
     const prioInput = document.createElement("select");
     const prioHigh = document.createElement("option");

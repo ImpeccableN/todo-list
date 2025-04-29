@@ -20,14 +20,18 @@ body {
     padding:10px 0 10px 0;
 }
 
-input, label, button, form {
+input, label, button, form, select {
     margin: 5px;
 }
 
+#newToDoButton, #toDoForm {
+    order: -1;
+}
 
 form {
     border: 1px solid black;
     border-radius: 10px;
+    padding: 5px;
 }
 
 #content {
@@ -51,9 +55,17 @@ form {
 .toDoDom {
     display: flex;
     flex-direction: column;
-    padding: 10px 0px 10px 20px;
+    padding: 10px;
+    margin: 5px;
+    border: 1px black solid;
+    border-radius: 10%;
+    background-color: lightgrey;
 }
 
 .toDoDom > div > button {
     margin: 5px 0px 5px 0px;
+}
+
+.pointer, button {
+    cursor: pointer;
 }

@@ -159,7 +159,7 @@ const createToDoDom = (toDo) => {
     title.classList.toggle("pointer");
 
     if(toDo.getDone()){
-        container.style["background-color"] = "lightgreen"
+        container.style["background-color"] = "green"
     };
 
     
@@ -220,7 +220,7 @@ function expandToDo(toDo, div) {
 
     doneButton.addEventListener("click", () => {
         toDo.setDone();
-        div.parentNode.style["background-color"] = "lightgreen";
+        div.parentNode.style["background-color"] = "green";
     })
 
     div.appendChild(date);

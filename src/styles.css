@@ -46,6 +46,11 @@ form {
     align-items: baseline;
 }
 
+#todos > div {
+    border: 2px solid black;
+    width: 100%
+}
+
 .projDom {
     display: flex;
     flex-wrap: wrap;

@@ -49,14 +49,14 @@ form {
 .projDom {
     display: flex;
     flex-direction: column;
-    align-items: baseline;
+    align-items: flex-start;
 }
 
 .toDoDom {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    margin: 5px;
+    margin: 5px 5px 5px 20px;
     border: 1px black solid;
     border-radius: 10%;
     background-color: lightgrey;

@@ -157,6 +157,7 @@ const createToDoDom = (toDo) => {
     title.textContent = toDo.getTitle();
     title.classList.toggle("pointer");
 
+    
     title.addEventListener("click", () => {
         if (!expandSwitch) {
             expandToDo(toDo, expandDiv)
@@ -200,20 +201,28 @@ function expandToDo(toDo, div) {
     const descr = document.createElement("div");
     const prio = document.createElement("div");
     const editButton = document.createElement("button");
+    const doneButton = document.createElement("button");
 
     date.textContent = "Due Date: " + toDo.getDueDate();
     descr.textContent = "Description: " + toDo.getDescription();
     prio.textContent = "Priority: " + toDo.getPriority();
     editButton.textContent = "edit";
+    doneButton.textContent = "Done";
 
     editButton.addEventListener("click", () => {
         editToDoForm(toDo, div);
+    })
+
+    doneButton.addEventListener("click", () => {
+        toDo.setDone();
+        div.parentNode.style["background-color"] = "lightgreen";
     })
 
     div.appendChild(date);
     div.appendChild(descr);
     div.appendChild(prio);
     div.appendChild(editButton);
+    div.appendChild(doneButton);
 }
 
 function editToDoForm(toDo, container){

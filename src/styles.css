@@ -48,8 +48,10 @@ form {
 
 #todos > div {
     border: 2px solid black;
+    border-radius: 10px;
     width: 100%;
     margin: 5px;
+    padding: 2px;
 }
 
 .projDom {

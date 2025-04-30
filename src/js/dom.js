@@ -152,6 +152,7 @@ const createToDoDom = (toDo) => {
     const expandDiv = document.createElement("div");
 
     container.classList.toggle("toDoDom");
+    expandDiv.classList.toggle("expandDiv");
 
     let expandSwitch = false;
 
@@ -227,9 +228,18 @@ function expandToDo(toDo, div) {
     });
 
     delButton.addEventListener("click", () => {
+        console.log("delButton pressed");
         listManager.removeToDo(toDo.getTitle());
         updateProjects();
         updateToDos();
+    });
+
+    delButton.addEventListener("mouseover", () => {
+        delButton.textContent = "X";
+    });
+
+    delButton.addEventListener("mouseout", () => {
+        delButton.textContent = "";
     });
 
     div.appendChild(delButton);

@@ -48,7 +48,8 @@ form {
 
 #todos > div {
     border: 2px solid black;
-    width: 100%
+    width: 100%;
+    margin: 5px;
 }
 
 .projDom {
@@ -79,5 +80,16 @@ form {
     cursor: pointer;
     border: 1px solid red;
     border-radius: 100%;
-    padding: 1px;
+    width: 10px;
+    height: 10px;
+    align-self: flex-end;
+    vertical-align: text-top;
+    text-align: center;
+    font-size: 0.5rem;
+    color:red;
+}
+
+.expandDiv {
+    display: flex;
+    flex-direction: column;
 }

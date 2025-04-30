@@ -57,11 +57,8 @@ export const listManager = (function listManage(){
 
     const getListPos = (toDoTitle) => {
         let list = toDoList.getList();
-        console.log("getListPos called");
         for (let i = 0; i < list.length; i++){
-            console.log(i);
             if (list[i].getTitle() == toDoTitle){
-                console.log(i);
                 return i;
             }
         };

@@ -1,4 +1,5 @@
-import { projListManager } from "./projects.js"
+import { projListManager } from "./projects.js";
+import { getUseStorage, storageManager } from "./save.js";
 
 function createTodo(title, dueDate, description, priority) {
     let done = false;
@@ -33,12 +34,13 @@ const toDoList = (function() {
     let list = [];
 
     const getList = () => list;
+    const setList = (array) => {list = array};
     const getListElement = (listPos) => list[listPos];
     const addToList = (toDo) => {list.push(toDo)};
     const removeFromList = (listPos) => {list.splice(listPos, 1)};
 
     return {
-        addToList, removeFromList, getList, getListElement
+        addToList, removeFromList, getList, setList, getListElement
     }
 })();
 
@@ -76,7 +78,11 @@ export const listManager = (function listManage(){
 
     const getList = () => toDoList.getList();
 
+    const setList = (array) => toDoList.setList(array);
+
+
+
     return {
-        newToDo, removeToDo, getList, getListElement
+        newToDo, removeToDo, getList, setList, getListElement
     };
 })();

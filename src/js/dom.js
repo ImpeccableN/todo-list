@@ -16,6 +16,7 @@ export const createButton = () => {
 }
 
 export const createProjButton = () => {
+    console.log("create Button")
     const newButton = document.createElement("button");
     newButton.setAttribute("id", "newProjButton");
     newButton.addEventListener("click", () => {
@@ -24,7 +25,7 @@ export const createProjButton = () => {
     });
     newButton.textContent = "new Project";
     content.appendChild(newButton);
-}
+};
 
 const createToDoForm = () => {
     const form = document.createElement("form");

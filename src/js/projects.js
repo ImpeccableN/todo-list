@@ -12,7 +12,7 @@ function createProject(title){
 
 const projList = (function() {
     let list = [];
-
+    
     const getList = () => list;
     const getListElement = (listPos) => list[listPos];
     const addToList = (project) => {list.push(project)};

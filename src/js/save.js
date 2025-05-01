@@ -48,7 +48,6 @@ export const storageManager = (function () {
 
     function loadFromLocalStorage() {
         const loadedList = JSON.parse(localStorage.getItem("todos"));
-        console.log("loadedList: " + loadedList);
         return loadedList;
     };
 

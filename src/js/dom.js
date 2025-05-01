@@ -225,10 +225,10 @@ function expandToDo(toDo, div) {
     doneButton.addEventListener("click", () => {
         toDo.setDone(true);
         div.parentNode.style["background-color"] = "green";
+        listManager.saveToLocal();
     });
 
     delButton.addEventListener("click", () => {
-        console.log("delButton pressed");
         listManager.removeToDo(toDo.getTitle());
         updateProjects();
         updateToDos();

@@ -88,7 +88,7 @@ export const listManager = (function listManage() {
             const descr = list[i].getDescription();
             const prio = list[i].getPriority();
 
-            checkForProject(project);
+            
 
             const newObj = { project, done, title, date, descr, prio };
             convertedList.push(newObj);
@@ -105,7 +105,7 @@ export const listManager = (function listManage() {
             };
         });
         if (!included) {
-            projListManager.newProj(project)
+            projListManager.newProj(project);
         };
     };
 
@@ -117,6 +117,7 @@ export const listManager = (function listManage() {
             todo.setDone(loadedList[i].done);
             todo.setProject(loadedList[i].project);
             newList.push(todo);
+            checkForProject(loadedList[i].project);
         }
         return newList;
     };

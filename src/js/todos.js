@@ -1,4 +1,6 @@
 import { checkStorage, storageManager } from "./save.js";
+import { projListManager } from "./projects.js";
+import { newProj } from "./dom.js";
 
 function createTodo(title, dueDate, description, priority) {
     let done = false;
@@ -86,10 +88,25 @@ export const listManager = (function listManage() {
             const descr = list[i].getDescription();
             const prio = list[i].getPriority();
 
+            checkForProject(project);
+
             const newObj = { project, done, title, date, descr, prio };
             convertedList.push(newObj);
         }
         return convertedList
+    };
+
+    function checkForProject(project) {
+        const list = projListManager.getList();
+        let included = false;
+        list.forEach((element) => {
+            if (project === element.getTitle()) {
+                included = true;
+            };
+        });
+        if (!included) {
+            projListManager.newProj(project)
+        };
     };
 
     const reverseToTodoObject = (loadedList) => {
@@ -121,11 +138,15 @@ export const listManager = (function listManage() {
         };
     };
 
-    if (storageManager.checkForSave()) {
-        loadFromLocal();
-    };
+    function initApp() {
+        projListManager.newProj("default");
+        if (storageManager.checkForSave()) {
+            loadFromLocal();
+        };
+    }
+
 
     return {
-        newToDo, removeToDo, getList, setList, getListElement
+        newToDo, removeToDo, getList, setList, getListElement, saveToLocal, initApp
     };
 })();

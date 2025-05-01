@@ -180,7 +180,6 @@ const createToDoDom = (toDo) => {
     toDoContainer.appendChild(container);
     container.appendChild(title);
     container.appendChild(expandDiv);
-
 };
 
 function newToDo(title, date, description, priority) {
@@ -194,6 +193,7 @@ function editToDo(toDo, proj, title, date, description, priority) {
     toDo.setDueDate(date);
     toDo.setDescription(description);
     toDo.setPriority(priority);
+    listManager.saveToLocal();
 }
 
 export function newProj(title) {

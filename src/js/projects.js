@@ -28,7 +28,6 @@ export const projListManager = (function manageProjList(){
     const newProj = function(title) {
         const proj = createProject(title);
         projList.addToList(proj);
-        console.log(projList.getList());
         return proj
     };
 

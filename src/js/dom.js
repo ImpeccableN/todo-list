@@ -4,7 +4,7 @@ import { projListManager } from "./projects.js";
 const content = document.querySelector("#content");
 const tododiv = document.querySelector("#todos");
 
-export const createButton = () => {
+const createButton = () => {
     const newButton = document.createElement("button");
     newButton.setAttribute("id", "newToDoButton");
     newButton.addEventListener("click", () => {
@@ -15,8 +15,7 @@ export const createButton = () => {
     content.appendChild(newButton);
 }
 
-export const createProjButton = () => {
-    console.log("create Button")
+const createProjButton = () => {
     const newButton = document.createElement("button");
     newButton.setAttribute("id", "newProjButton");
     newButton.addEventListener("click", () => {
@@ -224,7 +223,7 @@ function expandToDo(toDo, div) {
     });
 
     doneButton.addEventListener("click", () => {
-        toDo.setDone();
+        toDo.setDone(true);
         div.parentNode.style["background-color"] = "green";
     });
 
@@ -368,3 +367,10 @@ function updateToDos(){
         createToDoDom(list[i]);
     }
 }
+
+export function initDom() {
+    updateProjects();
+    updateToDos();
+    createButton();
+    createProjButton();
+};

@@ -1,4 +1,4 @@
-import { listManager } from "./todos.js";
+
 
 
 function storageAvailable(type) {
@@ -20,7 +20,7 @@ function storageAvailable(type) {
     }
 }
 
-export const checkStorage = function () {
+export const checkStorage = (function () {
     let useStorage = false;
 
     if (storageAvailable("localStorage")) {
@@ -35,26 +35,33 @@ export const checkStorage = function () {
     }
 
     return { getUseStorage };
-}
+})();
 
 
 export const storageManager = (function () {
-    
+
     function saveToLocalStorage(list) {
+        console.log("json list: " + JSON.stringify(list));
         localStorage.setItem("todos", JSON.stringify(list));
+        console.log(JSON.parse(localStorage.getItem("todos")))
     };
 
     function loadFromLocalStorage() {
         const loadedList = JSON.parse(localStorage.getItem("todos"));
+        console.log("loadedList: " + loadedList);
+        return loadedList;
     };
 
-    if (!localStorage.getItem("todos")) {
-        saveToLocalStorage();
-    } else {
-        loadFromLocalStorage();
-    };
+    function checkForSave() {
+        if (!localStorage.getItem("todos")) {
+            return false;
+        } else {
+            return true;
+        };
+    }
+
 
     return {
-        loadFromLocalStorage, saveToLocalStorage
+        loadFromLocalStorage, saveToLocalStorage, checkForSave
     }
 })();

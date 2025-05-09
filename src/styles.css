@@ -1,97 +1,103 @@
 .flex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 body {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 650px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: beige;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 650px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: beige;
 }
 
 #content {
-    height: auto;
-    padding:10px 0 10px 0;
+  height: auto;
+  padding: 10px 0 10px 0;
 }
 
-input, label, button, form, select {
-    margin: 5px;
+input,
+label,
+button,
+form,
+select {
+  margin: 5px;
 }
 
-#newToDoButton, #toDoForm {
-    order: -1;
+#newToDoButton,
+#toDoForm {
+  order: -1;
 }
 
 form {
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 #content {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 #todos {
-    width: 300px;
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
+  width: 300px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 #todos > div {
-    border: 2px solid black;
-    border-radius: 10px;
-    width: 100%;
-    margin: 5px;
-    padding: 2px;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 100%;
+  margin: 5px;
+  padding: 2px;
 }
 
 .projDom {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .toDoDom {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    margin: 2px;
-    border: 1px black solid;
-    border-radius: 10%;
-    background-color: lightgrey;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 2px;
+  border: 1px black solid;
+  border-radius: 10%;
+  background-color: lightgrey;
 }
 
 .toDoDom > div > button {
-    margin: 5px 5px 5px 0px;
+  margin: 5px 5px 5px 0px;
 }
 
-.pointer, button {
-    cursor: pointer;
+.pointer,
+button {
+  cursor: pointer;
 }
 
 .delButton {
-    cursor: pointer;
-    border: 1px solid red;
-    border-radius: 100%;
-    width: 10px;
-    height: 10px;
-    align-self: flex-end;
-    vertical-align: text-top;
-    text-align: center;
-    font-size: 0.5rem;
-    color:red;
+  cursor: pointer;
+  border: 1px solid red;
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+  align-self: flex-end;
+  vertical-align: text-top;
+  text-align: center;
+  font-size: 0.5rem;
+  color: red;
 }
 
 .expandDiv {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
